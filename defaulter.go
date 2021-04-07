@@ -9,27 +9,27 @@ import (
 	"runtime"
 )
 
-const EmptyString = "~"
-const EmptyInt = math.MaxInt32
+const EmptyString = "-<*[EmptyString]*>-"
+const ZeroInt = math.MaxInt32
 
 // TestDataDefaulter it used to apply defaults in a struct to a map of pointers to same struct type as defaults.
 type TestDataDefaulter interface {
 	ApplyDefaults(interface{}, interface{}) error
 	SetEmptyString(string)
-	SetEmptyInt(int)
+	SetZeroInt(int)
 }
 
 // default defaulter type returned by New()
 type testDataDefaulter struct {
 	emptyString string
-	emptyInt    int
+	zeroInt     int
 }
 
 // New returns an instantiated an object that implements the TestDataDefaulter interface
 func New() TestDataDefaulter {
 	return &testDataDefaulter{
 		emptyString: EmptyString,
-		emptyInt:    int(EmptyInt),
+		zeroInt:     int(ZeroInt),
 	}
 }
 
@@ -43,8 +43,8 @@ func (tdd testDataDefaulter) SetEmptyString(empty string) {
 // SetEmptyInt sets an int value to be used to indicate
 // an "empty" int for purposes of keeping an int property
 // as 0 instead of overwriting it by the property's default
-func (tdd testDataDefaulter) SetEmptyInt(empty int) {
-	tdd.emptyInt = empty
+func (tdd testDataDefaulter) SetZeroInt(empty int) {
+	tdd.zeroInt = empty
 }
 
 //ApplyDefaults applies the default properties to testdata when its properties are empty.
@@ -169,11 +169,11 @@ func (tdd testDataDefaulter) defaultTestCase(v, d reflect.Value, mi interface{})
 func (tdd testDataDefaulter) defaultFieldValue(f, dv reflect.Value) {
 	switch f.Kind() {
 	case reflect.String:
-		tdd.defaultFieldString(f,dv.String())
+		tdd.defaultFieldString(f, dv.String())
 	case reflect.Int:
-		tdd.defaultFieldInt(f,dv.Int())
+		tdd.defaultFieldInt(f, dv.Int())
 	case reflect.Ptr:
-		tdd.defaultFieldPtr(f,dv)
+		tdd.defaultFieldPtr(f, dv)
 	}
 }
 
@@ -201,7 +201,7 @@ func (tdd testDataDefaulter) defaultFieldString(f reflect.Value, ds string) {
 func (tdd testDataDefaulter) defaultFieldInt(f reflect.Value, di int64) {
 	fi := int(f.Int())
 	for range only.Once {
-		if fi == tdd.emptyInt {
+		if fi == tdd.zeroInt {
 			di = 0
 		} else if fi != 0 {
 			break
