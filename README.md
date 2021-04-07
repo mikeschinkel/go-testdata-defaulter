@@ -20,12 +20,12 @@ Now using that `testdata` struct, let's create some actual test data:
 
 ```go
 var testData = map[string]*testdata{
-	"test1": {
-		Name: "foo",
-	},
-	"test2": {
-		Child: &child{Key: "bar"},
-	},
+    "test1": {
+        Name: "foo",
+    },
+    "test2": {
+        Child: &child{Key: "bar"},
+    },
 }
 ```
 
@@ -33,10 +33,10 @@ And let's define our defaults, itself a single instance of `testdata`:
 
 ```go
 var defaultData = testdata{
-	Name: "default-data",
-	Child: &child{
-		Key: "default",
-	},
+    Name: "default-data",
+    Child: &child{
+        Key: "default",
+    },
 }
 ```
 
