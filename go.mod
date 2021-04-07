@@ -1,4 +1,4 @@
-module github.com/mikeschinkel/test-data-defaulter
+module github.com/mikeschinkel/testdatadefaulter
 
 go 1.16
 
