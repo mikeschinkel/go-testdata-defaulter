@@ -4,7 +4,7 @@ Simple Go package for defaulting tabular test data in a map of struct pointers
 to structs to the values in a default struct, e.g. `map[string]*yourTestDataStruct` 
 where `yourTestDataStruct` is whatever struct you need to create for your tests.
 
-Here is an example struct `info` and it's related structure `child`:
+Here is an example struct `testdata` and it's related structure `child`:
 
 ```go
 type testdata struct {
