@@ -27,7 +27,7 @@ var defaultData = testdata{
 }
 ```
 
-Now let's create some actual test data, sing a map of pointers to `testdata` instances:
+Now let's create some actual test data, sing a map of pointers to `testdata` instances. Notice how for the test-data we only set the properties that are changing from the defaults:
 
 ```go
 var testData = map[string]*testdata{
