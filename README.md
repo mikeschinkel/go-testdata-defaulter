@@ -16,7 +16,18 @@ type child struct {
     Key string
 }
 ```
-Now using that `testdata` struct, let's create some actual test data:
+Let's first define our defaults using that `testdata` struct:
+
+```go
+var defaultData = testdata{
+    Name: "default-data",
+    Child: &child{
+        Key: "default",
+    },
+}
+```
+
+Now let's create some actual test data, sing a map of pointers to `testdata` instances:
 
 ```go
 var testData = map[string]*testdata{
@@ -25,17 +36,6 @@ var testData = map[string]*testdata{
     },
     "test2": {
         Child: &child{Key: "bar"},
-    },
-}
-```
-
-And let's define our defaults, itself a single instance of `testdata`:
-
-```go
-var defaultData = testdata{
-    Name: "default-data",
-    Child: &child{
-        Key: "default",
     },
 }
 ```
