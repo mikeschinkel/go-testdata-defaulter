@@ -40,7 +40,7 @@ var testData = map[string]*testdata{
 }
 ```
 
-To use this package you simply create a new instance and then run `ApplyDefaults`:
+To use this package you simply create a new defaulter instance and then run `ApplyDefaults`:
 
 ```go
 defaulter := testdatadefaulter.New()
