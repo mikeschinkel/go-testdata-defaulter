@@ -1,4 +1,4 @@
-# Test Data Defaulter
+# Test Data Defaulter for Go
 
 Simple Go package for defaulting tabular test data in a map of struct pointers
 to structs to the values in a default struct, e.g. `map[string]*yourTestDataStruct` 
